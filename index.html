@@ -64,32 +64,34 @@
         //ここから追加部分
 
 
-
+        for(prediction[0].probability.toFixed(2) > 0.9){
+            
+        }
         
 
         if(prediction[2].probability.toFixed(2) > 0.50){
 
-            window.location.href = r"./jump_pages/twodice.html"
+            window.location.href = "./jump_pages/twodice.html"
 
         } else if(prediction[6].probability.toFixed(2) > 0.50){
 
-            window.location.href = r"./jump_pages/sixdice.html"
+            window.location.href = "./jump_pages/sixdice.html"
 
         } else if(prediction[3].probability.toFixed(2) > 0.80){
 
-            window.location.href = r"./jump_pages/threedice.html"
+            window.location.href = "./jump_pages/threedice.html"
 
         } else if(prediction[5].probability.toFixed(2) > 0.75){
 
-            window.location.href = r"./jump_pages/fivedice.html"
+            window.location.href = "./jump_pages/fivedice.html"
 
         } else if(prediction[4].probability.toFixed(2) > 0.90){
 
-            window.location.href = r"./jump_pages/fourdice.html"
+            window.location.href = "./jump_pages/fourdice.html"
 
         } else if(prediction[1].probability.toFixed(2) > 0.90){
 
-            window.location.href = r"./jump_pages/onedice.html"
+            window.location.href = "./jump_pages/onedice.html"
 
         }
 

@@ -19,7 +19,7 @@
     // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
 
     // the link to your model provided by Teachable Machine export panel
-    const URL = "./my_model/";
+    const URL = "https://teachablemachine.withgoogle.com/models/AkSUmX1IV/";
 
     let model, webcam, labelContainer, maxPredictions;
 
@@ -60,41 +60,32 @@
     async function predict() {
         // predict can take in an image, video or canvas html element
         const prediction = await model.predict(webcam.canvas);
+        for (let i = 0; i < maxPredictions; i++) {
+            const classPrediction =
+                prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+            labelContainer.childNodes[i].innerHTML = classPrediction;
 
-        //ここから追加部分
+            if(prediction[2].probability.toFixed(2) > 0.40){
+                window.location.href = "jump_pages/twodice.html"
 
-        
+            } else if(prediction[3].probability.toFixed(2) > 0.80){
+                window.location.href = "jump_pages/threedice.html"
 
-        if(prediction[2].probability.toFixed(2) > 0.50){
-
-            window.location.href = "./jump_pages/twodice.html"
-
-        } else if(prediction[6].probability.toFixed(2) > 0.50){
-
-            window.location.href = "./jump_pages/sixdice.html"
-
-        } else if(prediction[3].probability.toFixed(2) > 0.80){
-
-            window.location.href = "./jump_pages/threedice.html"
-
-        } else if(prediction[5].probability.toFixed(2) > 0.75){
-
-            window.location.href = "./jump_pages/fivedice.html"
-
-        } else if(prediction[4].probability.toFixed(2) > 0.90){
-
-            window.location.href = "./jump_pages/fourdice.html"
-
-        } else if(prediction[1].probability.toFixed(2) > 0.90){
-
-            window.location.href = "./jump_pages/onedice.html"
+            } else if(prediction[6].probability.toFixed(2) > 0.50){
+                window.location.href = "jump_pages/sixdice.html"
+                
+            } else if(prediction[5].probability.toFixed(2) > 0.70){
+                window.location.href = "jump_pages/fivedice.html"
+                
+            } else if(prediction[4].probability.toFixed(2) > 0.90){
+                window.location.href = "jump_pages/fourdice.html"
+                
+            } else if(prediction[1].probability.toFixed(2) > 0.90){
+                window.location.href = "jump_pages/onedice.html"
+                
+            }
 
         }
-
-
-
-        //ここまで追加部分
-
     }
 </script>
 
